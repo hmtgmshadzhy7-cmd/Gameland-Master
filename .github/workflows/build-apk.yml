@@ -24,13 +24,13 @@ jobs:
           gradle-version: '8.9'
 
       - name: Extract project
-        run: unzip -q GameLandMaster-project-files.zip -d extracted
+        run: unzip -q GameLandMaster-prototype.zip -d extracted
 
       - name: Build APK
-        working-directory: extracted
+        working-directory: extracted/GameLandMaster
         run: gradle assembleDebug
 
       - uses: actions/upload-artifact@v4
         with:
           name: GameLandMaster-APK
-          path: extracted/app/build/outputs/apk/debug/*.apk
+          path: extracted/GameLandMaster/app/build/outputs/apk/debug/*.apk
