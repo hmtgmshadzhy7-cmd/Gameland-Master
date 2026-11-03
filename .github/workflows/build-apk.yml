@@ -26,6 +26,11 @@ jobs:
       - name: Extract project
         run: unzip -q GameLandMaster-prototype.zip -d extracted
 
+      - name: Fix Java compatibility
+        working-directory: extracted/GameLandMaster
+        run: |
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' app/build.gradle.kts
+
       - name: Build APK
         working-directory: extracted/GameLandMaster
         run: gradle assembleDebug
